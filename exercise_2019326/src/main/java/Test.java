@@ -56,40 +56,70 @@ public class Test {
     在一个字符串(0<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置,
     如果没有则返回 -1（需要区分大小写）.
      */
-    public static int FirstNotRepeatingChar(String str) {
-        if (str==null){
-            return -1;
+//    public static int FirstNotRepeatingChar(String str) {
+//        if (str==null){
+//            return -1;
+//        }
+//        char[] c=str.toCharArray();
+//        Map<Character,Integer> map=new HashMap<Character, Integer>();
+//        for (int i=0;i<c.length;i++){
+//            if (!map.containsKey(c[i])){
+//                map.put(c[i],1);
+//            }
+//            else {
+//                int count=map.get(c[i]);
+//                map.put(c[i],++count);
+//            }
+//        }
+//        Iterator iterator=map.entrySet().iterator();
+//        Map<Character,Integer> map2=new HashMap<Character, Integer>();
+//        while (iterator.hasNext()){
+//            Map.Entry m= (Map.Entry) iterator.next();
+//            Character k= (Character) m.getKey();
+//            Integer value= (Integer) m.getValue();
+//            if (value==1){
+//                 map2.put(k,1);
+//            }
+//        }
+//        for (int j=0;j<c.length;j++){
+//            if (map2.containsKey(c[j])){
+//                return j;
+//            }
+//        }
+//        return -1;
+//    }
+//
+//    public static void main(String[] args) {
+//        System.out.println(FirstNotRepeatingChar("aabccddee"));
+//    }
+
+
+    /*
+    题目描述
+    统计一个数字在排序数组中出现的次数。
+     */
+    public static int GetNumberOfK(int[] array, int k) {
+        if (array==null){
+            return 0;
         }
-        char[] c=str.toCharArray();
-        Map<Character,Integer> map=new HashMap<Character, Integer>();
-        for (int i=0;i<c.length;i++){
-            if (!map.containsKey(c[i])){
-                map.put(c[i],1);
-            }
-            else {
-                int count=map.get(c[i]);
-                map.put(c[i],++count);
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < array.length; i++) {
+            if (!map.containsKey(array[i])) {
+                map.put(array[i], 1);
+            } else {
+                int count = map.get(array[i]);
+                map.put(array[i], ++count);
             }
         }
         Iterator iterator=map.entrySet().iterator();
-        Map<Character,Integer> map2=new HashMap<Character, Integer>();
         while (iterator.hasNext()){
             Map.Entry m= (Map.Entry) iterator.next();
-            Character k= (Character) m.getKey();
+            Integer key= (Integer) m.getKey();
             Integer value= (Integer) m.getValue();
-            if (value==1){
-                 map2.put(k,1);
+            if (key==k){
+                return value;
             }
         }
-        for (int j=0;j<c.length;j++){
-            if (map2.containsKey(c[j])){
-                return j;
-            }
-        }
-        return -1;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(FirstNotRepeatingChar("aabccddee"));
+        return 0;
     }
 }
