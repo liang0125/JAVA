@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -98,28 +99,44 @@ public class Test {
     题目描述
     统计一个数字在排序数组中出现的次数。
      */
-    public static int GetNumberOfK(int[] array, int k) {
-        if (array==null){
-            return 0;
-        }
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int i = 0; i < array.length; i++) {
-            if (!map.containsKey(array[i])) {
-                map.put(array[i], 1);
-            } else {
-                int count = map.get(array[i]);
-                map.put(array[i], ++count);
-            }
-        }
-        Iterator iterator=map.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry m= (Map.Entry) iterator.next();
-            Integer key= (Integer) m.getKey();
-            Integer value= (Integer) m.getValue();
-            if (key==k){
-                return value;
-            }
-        }
-        return 0;
+//    public static int GetNumberOfK(int[] array, int k) {
+//        if (array==null){
+//            return 0;
+//        }
+//        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+//        for (int i = 0; i < array.length; i++) {
+//            if (!map.containsKey(array[i])) {
+//                map.put(array[i], 1);
+//            } else {
+//                int count = map.get(array[i]);
+//                map.put(array[i], ++count);
+//            }
+//        }
+//        Iterator iterator=map.entrySet().iterator();
+//        while (iterator.hasNext()){
+//            Map.Entry m= (Map.Entry) iterator.next();
+//            Integer key= (Integer) m.getKey();
+//            Integer value= (Integer) m.getValue();
+//            if (key==k){
+//                return value;
+//            }
+//        }
+//        return 0;
+//    }
+
+
+/*
+题目描述
+求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+ */
+    public static int Sum_Solution(int n) {
+       int sum=n;
+       boolean t=(n>0)&&(sum+=Sum_Solution(n-1))>0;
+        return sum;
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Sum_Solution(5));
     }
 }
