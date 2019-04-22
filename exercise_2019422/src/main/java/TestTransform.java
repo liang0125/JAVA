@@ -5,6 +5,10 @@ import java.util.Scanner;
 /**
  * Author:lorrie
  * Create:2019/4/22
+ *
+ *
+ * 题目描述：
+ * c语言风格命名变Java风格大小驼峰命名
  */
 public class TestTransform {
     public static String transform(String s){
