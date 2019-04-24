@@ -11,7 +11,7 @@ public class Test1 {
         if (sequence==null||sequence.length==0){
             return false;
         }
-       return test_V(sequence,0,sequence.length-1);
+       return test_V(sequence,0,sequence.length-1);//递归
     }
     public static boolean test_V(int[] sequence,int start,int last){
         if (last==start||start>last){
@@ -33,6 +33,7 @@ public class Test1 {
             }
         }
        return test_V(sequence,start,index)&& test_V(sequence,index+1,last-1);
+        //左右子树都满足
     }
 
     public static void main(String[] args) {
